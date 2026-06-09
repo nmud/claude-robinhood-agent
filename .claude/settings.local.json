@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "WebSearch"
+      "WebSearch",
+      "mcp__robinhood-trading__get_accounts",
+      "mcp__robinhood-trading__get_portfolio",
+      "mcp__robinhood-trading__get_equity_positions",
+      "mcp__robinhood-trading__get_watchlists",
+      "mcp__robinhood-trading__get_watchlist_items",
+      "mcp__robinhood-trading__get_equity_quotes"
     ]
   }
 }

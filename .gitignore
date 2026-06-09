@@ -7,8 +7,12 @@ secrets*
 mcp.json
 .mcp.json
 
-# local-only notes (uncomment if you want fills/positions kept off GitHub)
-# config.md
+# personal docs — your journal + account data. keep private, ship templates only.
+/findings/*
+!/findings/README.md
+NOTES.md
+SCORECARD.md
+config.md
 
 # OS / editor junk
 .DS_Store
