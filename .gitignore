@@ -1,0 +1,17 @@
+# secrets / creds — never commit
+.env
+.env.*
+*.key
+*.pem
+secrets*
+mcp.json
+.mcp.json
+
+# local-only notes (uncomment if you want fills/positions kept off GitHub)
+# config.md
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
