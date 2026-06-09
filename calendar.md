@@ -6,11 +6,20 @@ ticker + allowlist ticker. Stale entries (>5 trading days old) must be re-verifi
 ## Macro
 | Date | Event | Why it matters |
 |---|---|---|
-| | FOMC / CPI / NFP / etc. | |
+| 2026-06-10 | CPI (May) | No new entries before release; vol spike risk |
+| 2026-06-11 | PPI (May) | Same caution as CPI |
+| 2026-06-11 | Senate Banking hearing: AI/China | Minor; chip-sector headline source |
+| ~2026-06-16/17 | FOMC + SEP (VERIFY exact dates) | Event days; S5 rules if vol spikes |
+| ongoing | Trump Section 301 tariff wave (60 countries proposed) | Broad headline risk; Tier-1 sweep priority |
 
 ## Per-ticker
 | Ticker | Next earnings | Other known events (splits, lockups, product, legal) | Verified on |
 |---|---|---|---|
+| SPY | n/a (index) | — | 2026-06-09 |
+| QQQ | n/a (index) | — | 2026-06-09 |
+| AAPL | ~late Jul (VERIFY) | WWDC just ended; Siri timeline = sentiment driver | 2026-06-09 (earnings date unverified) |
+| MSFT | ~late Jul (VERIFY) | — | 2026-06-09 (earnings date unverified) |
+| NVDA | ~late Aug (VERIFY) | Apple AI client win; Korea partnerships | 2026-06-09 (earnings date unverified) |
 
 ## Rules tied to this file (enforced in CLAUDE.md)
 - No NEW entry within 2 trading days before that ticker's earnings, unless the
