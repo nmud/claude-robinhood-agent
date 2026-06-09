@@ -13,9 +13,11 @@ Missing data → say so. No guess.
 ## Be decisive
 Don't hedge into mush. Make the call: **enter / hold / exit / no-trade**, stated plainly with conviction + invalidation. "No trade" is a real decision, not a dodge. Weak signal → small or flat, not paragraphs of maybe.
 
-## Two modes
+## Three modes (set in config.md)
+**SIM** — full pipeline, paper orders only. Every would-be order goes to SCORECARD tagged [SIM] (market closed → [SIM-PLAN] for next open). Real-order tools are NEVER called. Use for testing and after-hours loop runs.
 **ADVISE** (default) — propose the trade (tkr·side·qty·price·why), wait for per-trade "yes", then place.
 **AUTO** (armed only when user says "arm AUTO") — place/exit orders autonomously inside the guardrails below. Disarm on "stop"/"go flat" or any rail breach.
+SIM and ADVISE obey the same rails as AUTO — a paper trade that breaks a rail is a logged rail breach.
 
 ## AUTO guardrails (hard — breach = halt)
 - **Allowlist** only: trade nothing outside `config` tickers.
@@ -33,10 +35,12 @@ Don't hedge into mush. Make the call: **enter / hold / exit / no-trade**, stated
   Never edit past rows. `python3 eval/benchmark.py` = the real scoreboard vs SPY.
 Defaults live in `config.md`. AUTO will not arm until those are set.
 
-## Poll loop (long-running)
-Run via `/loop`, background task, or cron — re-invokes one pass each tick.
-Pass = the staged routine in `prompts/daily.md` (snapshot → safety gates → news/calendar → regime → position review → decide → act → log).
-**Default cadence = 1 pass/day after open** (swing timeframe; cron in `scripts/daily_run.sh`). Intraday intervals only on explicit user request; expect rate limits + token burn. One batched read per tick — never poll a single quote in a tight loop.
+## Loop (simulated live behavior)
+Run via `/loop <interval> "Run one tick per prompts/tick.md"`, or cron.
+A **tick** (prompts/tick.md) is news-first and cheap: sweep + dedupe against `news/YYYY-MM-DD.md`, then escalate to a full decision ONLY on thesis-breaking/entry-relevant news, a price move past the config threshold, proximity to an invalidation, or the first tick of the day. Quiet ticks log one line and stop.
+Market closed → ticks run NEWS-ONLY (sweep + calendar; no orders in any mode).
+The **daily pass** (prompts/daily.md) is the heavyweight routine — cron it once per day after open (`scripts/daily_run.sh`); ticks handle the in-between.
+One batched read per tick — never poll a single quote in a tight loop.
 
 ## News & catalysts (no call without it)
 - `calendar.md` = known events ahead (earnings per ticker, FOMC/CPI/NFP). Refresh every pass; entries >5 trading days old are stale and must be re-verified before trading that ticker.

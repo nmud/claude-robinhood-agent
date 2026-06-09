@@ -1,0 +1,48 @@
+Run ONE loop tick. Light by default — escalate only when news or price warrants.
+
+## 0. Mode & hours
+- Read `Mode` from config.md: SIM / ADVISE / AUTO.
+- Market closed (incl. pre/after-hours)? → NEWS-ONLY tick: run stages 1–2,
+  log, stop. No orders in any mode; SIM logs a "plan for next open" instead.
+
+## 1. News sweep (the core of every tick)
+- WebSearch headlines for held + allowlist tickers published since the last tick.
+- Dedupe: check today's `news/YYYY-MM-DD.md` (and yesterday's on the first tick).
+  Already-logged items are skipped silently.
+- Classify each NEW item:
+  - THESIS-BREAKING — contradicts a held position's logged thesis
+  - THESIS-CONFIRMING — supports a held thesis
+  - ENTRY-RELEVANT — could justify a new allowlist entry (catalyst-grade only)
+  - NOISE — everything else (do not log)
+- Append non-noise items to `news/YYYY-MM-DD.md`:
+  `HH:MM | TKR | class | one-line summary | source domain`
+- First tick of the day only: macro sweep (rates, VIX, today's data releases)
+  + refresh `calendar.md`.
+- Account data NEVER goes into web queries.
+
+## 2. Escalation gate
+Run the full decision stage ONLY if at least one is true:
+- any THESIS-BREAKING or ENTRY-RELEVANT item this tick
+- an allowlist/held ticker moved more than the threshold in config.md since last tick
+- a held position is within 1% of its logged invalidation
+- it's the first tick of the trading day (full pass per prompts/daily.md)
+Otherwise append one line to `news/YYYY-MM-DD.md`: `HH:MM | tick | no escalation`
+and STOP. A quiet tick is the normal outcome.
+
+## 3. Decision (only if escalated)
+Per CLAUDE.md: regime (≥2 signals) → strategy fit → risk (entry·invalidation·
+target·size). All rails apply: allowlist, caps, earnings blackout, kill switch,
+daily loss limit, max trades/day.
+
+## 4. Act — by mode
+- SIM: no real orders ever. Log the paper order to SCORECARD.md tagged [SIM]
+  with tkr·side·qty·ref price·time. Market closed → log as [SIM-PLAN] for open.
+- ADVISE: propose (tkr·side·qty·price·why·invalidation), wait for "yes".
+- AUTO: place within config.md rails. Log fill to SCORECARD immediately.
+
+## 5. Log
+- Escalated tick → `findings/YYYY-MM-DD-<tkr>.md` (include Catalysts line).
+- Once per day (first escalated tick or last tick): append `date,nav,spy_close`
+  to `eval/nav_log.csv`. In SIM, nav = paper NAV (cash + marked paper positions).
+
+Be terse. One batched quote read per tick. No essays on quiet ticks.
