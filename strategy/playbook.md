@@ -48,6 +48,11 @@ The weekly review (prompts/weekly.md) tunes these setups from scorecard evidence
 - Not a setup — a prohibition. VIX spiking / regime = high-vol:
   NO new entries. Manage exits, raise cash toward the floor, wait.
 
+## Time stop (applies to every setup)
+A position that has made no progress toward target AND produced no new
+confirming information for 15 sessions is closed — the slot and the attention
+are worth more than the hope. (S4 keeps its own 20-session limit.)
+
 ## Sizing (applies to every setup)
 risk-based, not flat-dollar:
   shares = (Risk per trade % × NAV) / (entry − invalidation)

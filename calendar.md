@@ -10,6 +10,7 @@ ticker + allowlist ticker. Stale entries (>5 trading days old) must be re-verifi
 | 2026-06-11 | PPI (May) | Same caution as CPI |
 | 2026-06-11 | Senate Banking hearing: AI/China | Minor; chip-sector headline source |
 | ~2026-06-16/17 | FOMC + SEP (VERIFY exact dates) | Event days; S5 rules if vol spikes |
+| 2026-06-19 | Juneteenth — MARKET CLOSED | No passes needed; ticks run news-only |
 | ongoing | Trump Section 301 tariff wave (60 countries proposed) | Broad headline risk; Tier-1 sweep priority |
 
 ## Per-ticker

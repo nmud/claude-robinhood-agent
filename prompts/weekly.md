@@ -18,13 +18,20 @@ Group resolved trades by playbook setup (S1–S4). Any setup with ≥5 resolved
 trades and negative expectancy → propose tightening or suspending it.
 Any setup never triggered in 3+ weeks → check if its conditions are realistic.
 
-## 4. News-layer audit
+## 4. Platform drift check
+Robinhood Agentic is a beta — tools change. Compare the MCP tool names the
+prompts assume against what /mcp actually exposes now; check Robinhood's
+agentic-trading changelog/support page for new capabilities (options, crypto,
+order types were announced as "coming"). New order types (e.g. stops) may
+upgrade soft invalidations to hard stops — flag for the human.
+
+## 5. News-layer audit
 - Sample this week's news/ files: how many ENTRY-RELEVANT items led to anything?
   How many THESIS-BREAKING calls were validated by the subsequent move?
 - If NOISE leaked into the logs or breaking news was missed, tighten the
   classification wording in prompts/tick.md.
 
-## 5. Consolidate memory (NOTES → lessons)
+## 6. Consolidate memory (NOTES → lessons)
 - Read this week's NOTES.md entries + lessons.md.
 - Promote CANDIDATEs that reached ≥3 observations to ACTIVE (cite the rows).
 - Demote ACTIVE lessons contradicted ≥2× this week to RETIRED (strikethrough, keep).
@@ -33,12 +40,12 @@ Any setup never triggered in 3+ weeks → check if its conditions are realistic.
   grows is a junk drawer, not learning.
 - Week 4+: re-examine the seeded literature priors against OUR scorecard data.
 
-## 6. Write the retro
+## 7. Write the retro
 Append to top of NOTES.md:
 `DATE — RETRO — stats one-liner; best/worst setup; one process change proposed`
 Plus a findings/YYYY-MM-DD-retro.md with the full numbers.
 
-## 7. Propose changes — within authority
+## 8. Propose changes — within authority
 - MAY edit: strategy/playbook.md (tighten/suspend/tune setups),
   prompts/tick.md classification wording, allowlist proposals in the retro.
 - MUST NOT touch: CLAUDE.md hard rails, config.md caps/floors/mode.

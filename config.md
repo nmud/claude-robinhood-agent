@@ -10,6 +10,7 @@ Sized for a ~$1,000 agentic account. Edit, then say "arm AUTO".
 - Risk per trade (% NAV): 0.75
 - Daily loss limit (% portfolio): 2   # measured vs previous close NAV (last nav_log row)
 - Drawdown tier-1 floor ($): 925   # below: half size, 1 trade/day, no new names
+- Max correlated-bucket exposure (% NAV, satellite): 20   # mega-tech bucket: AAPL MSFT NVDA QQQ
 - Max trades/day: 3
 - Kill-switch NAV floor ($): 850
 - Cadence: 1 daily pass after open (cron: scripts/daily_run.sh) + loop ticks

@@ -29,10 +29,12 @@ First trading day of the month → run the S0 core-sleeve check (playbook).
 
 ## 5. Regime (per CLAUDE.md: ≥2 signals, not vibes)
 
-## 6. Position review
-Each held position: check against its logged invalidation AND today's news class.
-Invalidation hit or THESIS-BREAKING news → exit this pass. Earnings within 5
-sessions → explicit hold-through-or-exit decision, in writing.
+## 6. Position review (ledger = positions.md, not memory)
+Each row in positions.md: check against its invalidation, its time stop
+(15 sessions, playbook), AND today's news class. Invalidation hit or
+THESIS-BREAKING news → exit this pass. Earnings within 5 sessions → explicit
+hold-through-or-exit decision, in writing. Any change → update positions.md
+same pass (intent-then-confirm for orders).
 
 ## 7. New ideas (max 1–2, allowlist only, playbook setups only)
 Entry checklist: named setup + thesis + catalyst/timeframe + invalidation +
