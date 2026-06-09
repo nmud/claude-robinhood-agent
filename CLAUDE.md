@@ -85,6 +85,8 @@ Reads cheap, batch them. One snapshot per tick. Account data private — never t
 - **On entry, place a broker-side stop at the invalidation** if order types allow; otherwise the invalidation is a soft stop checked per tick. Either way assume **gap risk**: the per-position cap, not the stop distance, is the true max loss. Size accordingly.
 - **No stacking:** before ANY order, check open orders. Pending order on the same ticker → do not place another. (Protects against a crashed pass re-running.)
 - **Slippage log:** record intended price vs fill in the finding. Weekly review flags setups whose edge dies to slippage.
+- **Day trading (post-June-2026 rules):** the PDT 3-per-week cap is gone — same-day exits on invalidation or THESIS-BREAKING news are ALWAYS allowed and never deferred. But intraday round-trips as a *strategy* remain off-playbook: our news latency is minutes-to-tens-of-minutes, which loses on intraday timeframes by construction.
+- **Settlement (if cash account):** equity sales settle T+1. Before any entry, check SETTLED buying power, not just displayed buying power; never create a good-faith violation by buying with unsettled funds and selling before they settle. Preflight determines the account type.
 - **Arithmetic check:** compute sizing twice, independently. Mismatch → recompute; still inconsistent → no trade.
 
 ## Data integrity & security

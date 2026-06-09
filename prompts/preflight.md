@@ -23,6 +23,11 @@ Execution discipline).
   eval/nav_log.csv and a position inventory to today's finding.
 - Any existing positions/orders the journal doesn't know → record them now as
   the starting state (inherited, no thesis — decide hold/exit in next daily pass).
+- **Account type:** determine whether the Agentic account is CASH or MARGIN
+  (account fields / buying-power structure / settled vs unsettled split).
+  Cash → settlement rules in CLAUDE.md apply (settled buying power only).
+  Margin → margin stays unused (rails forbid it); note how the API reports
+  settled vs instant buying power either way. Record the answer in the finding.
 
 ## 5. Sizing dry-run (arithmetic only)
 Hypothetical S1 trade: NAV from step 4, entry $100, invalidation $96.
