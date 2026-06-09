@@ -16,6 +16,10 @@ Run ONE loop tick. Light by default — escalate only when news or price warrant
   - NOISE — everything else (do not log)
 - Append non-noise items to `news/YYYY-MM-DD.md`:
   `HH:MM | TKR | class | one-line summary | source domain`
+- People & policy sweep (`strategy/people.md`): Tier-1 (President/Fed/regulators)
+  EVERY tick — a statement naming a held ticker or its sector is a
+  THESIS-BREAKING-candidate, reviewed this tick. Tiers 2–3 (congressional
+  disclosures, 13Fs, short reports) on the first tick of the day only.
 - First tick of the day only: macro sweep (rates, VIX, today's data releases)
   + refresh `calendar.md`.
 - Account data NEVER goes into web queries.

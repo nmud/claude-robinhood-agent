@@ -14,6 +14,10 @@ quote → log it, place no trades, stop.
   events (FOMC, CPI, NFP) in the next 2 weeks.
 - Per held position: scan headlines since the last pass. Classify each hit:
   THESIS-BREAKING / THESIS-CONFIRMING / NOISE. Only the first two go in the finding.
+- People & policy sweep per `strategy/people.md`: Tier-1 statements (President,
+  Fed, regulators) affecting held/allowlist names or the whole tape; Tier-2/3
+  (congressional disclosures, 13Fs, short reports) as ENTRY-RELEVANT ideas only —
+  disclosure lag means idea, never copy-trade.
 - Macro: one-line regime-relevant summary (rates, vol, sector rotation). No essays.
 
 ## 4. Memory load

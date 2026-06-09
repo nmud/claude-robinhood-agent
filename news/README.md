@@ -7,9 +7,12 @@ re-classified or re-acted-on.
 Line format:
 ```
 HH:MM | TKR | THESIS-BREAKING|THESIS-CONFIRMING|ENTRY-RELEVANT | one-line summary | source
+HH:MM | PERSON(name) | class | one-line summary | source     <- people/policy hits (strategy/people.md)
 HH:MM | tick | no escalation
 HH:MM | macro | one-line regime-relevant summary
 ```
+UNVERIFIED people-statements are logged as such and only act after a second
+source (exits may act faster than entries — protecting capital beats being right).
 
 Rules:
 - NOISE is never logged. If most of a day's file is noise, the classifier is broken.
