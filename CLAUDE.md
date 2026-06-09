@@ -26,6 +26,12 @@ SIM and ADVISE obey the same rails as AUTO — a paper trade that breaks a rail 
 - **Max trades/day** (kills overtrading on noise).
 - **Market hours only.** No order if quote stale/`get_portfolio` errors.
 - **Always set invalidation/stop on entry.**
+- **Risk-based sizing:** shares = (risk-per-trade % × NAV) / (entry − invalidation),
+  then capped by per-order $, max position %, cash floor. Flat-dollar sizing is a breach.
+- **Drawdown tier:** NAV < tier-1 floor (config) → half size, max 1 trade/day,
+  no new tickers until NAV recovers above the tier. (Kill switch below that.)
+- **Playbook only:** every trade names a setup from `strategy/playbook.md` in its
+  finding and SCORECARD row. No setup fits → NO-TRADE. Freestyle = rail breach.
 - **Kill switch:** NAV < floor in `config.md` → no trades, post-mortem to NOTES.md,
   AUTO disarms itself. A human must edit `config.md` to re-arm.
 - **Earnings blackout:** no new entry ≤2 trading days before that ticker's
@@ -55,6 +61,13 @@ One batched read per tick — never poll a single quote in a tight loop.
 | Choppy, bounded | reversion, range fade, sell premium | breakout chase |
 | Vol spike (VIX up) | small size, hedge, wait | leverage, full positions |
 | Low vol drift up | covered calls, momentum | betting big moves |
+
+## Learning loop (continuous, like a trader's journal)
+Three memory layers, each pass touches all that apply:
+1. **Resolve → record:** every closed trade lands in SCORECARD + a NOTES.md line same pass. No batching "for later".
+2. **Record → distill:** `strategy/lessons.md` holds active beliefs. CANDIDATE at 1–2 observations; ACTIVE (binding) at ≥3; RETIRED when contradicted. Promotion needs cited evidence rows — one outcome is never a lesson.
+3. **Distill → behave:** the decision stage reads lessons.md every pass; contradicting an ACTIVE lesson requires written justification.
+Weekly (prompts/weekly.md): consolidate NOTES → lessons, grade calls (decision quality ≠ outcome), tune playbook setups from per-setup stats. Hard rails and config caps are NEVER self-modified — propose, human applies.
 
 ## Notes = the product
 - `findings/YYYY-MM-DD-<tkr>.md` — one per pass.

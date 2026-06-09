@@ -30,8 +30,9 @@ Otherwise append one line to `news/YYYY-MM-DD.md`: `HH:MM | tick | no escalation
 and STOP. A quiet tick is the normal outcome.
 
 ## 3. Decision (only if escalated)
-Per CLAUDE.md: regime (≥2 signals) → strategy fit → risk (entry·invalidation·
-target·size). All rails apply: allowlist, caps, earnings blackout, kill switch,
+Per CLAUDE.md: regime (≥2 signals) → playbook setup (strategy/playbook.md — name
+it, or NO-TRADE) → risk (entry·invalidation·target·risk-based size). All rails
+apply: allowlist, caps, earnings blackout, drawdown tier, kill switch,
 daily loss limit, max trades/day.
 
 ## 4. Act — by mode
