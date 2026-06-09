@@ -3,12 +3,21 @@
 Config is already `Mode: SIM`. After hours, every tick should run NEWS-ONLY:
 sweep → classify → log; paper plans instead of orders; nothing real placed.
 
-## Run it
+## Step 0 — preflight (run this FIRST, once)
 
 ```
 cd ~/claude-robinhood-agent
 claude
 /mcp                       # confirm robinhood-trading is connected
+Run the preflight per prompts/preflight.md
+```
+Read findings/preflight-*.md. The two answers that matter most:
+does the MCP serve historical candles (regime math), and does the order
+tool support stop orders (hard vs soft invalidations)?
+
+## Run the loop
+
+```
 /loop 15m Run one tick per prompts/tick.md
 ```
 

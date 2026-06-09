@@ -1,9 +1,11 @@
 Run the daily pass. Stages in order — do not skip, do not reorder.
 
-## 1. Snapshot (one batched read)
-Portfolio, positions, buying power, quotes for held + allowlist tickers
-(get_portfolio, get_equity_positions, get_equity_quotes). MCP error or stale
-quote → log it, place no trades, stop.
+## 1. Snapshot + reconcile (one batched read)
+Portfolio, positions, buying power, OPEN ORDERS, quotes for held + allowlist
+tickers (get_portfolio, get_equity_positions, get_equity_quotes). MCP error or
+stale quote → log it, place no trades, stop.
+Broker truth vs journal mismatch (position we didn't log, fill we missed,
+manual trade) → reconcile in writing first; no new trades this pass.
 
 ## 2. Safety gates
 - Kill switch: NAV below floor in config.md → no trades, post-mortem to NOTES.md, stop.

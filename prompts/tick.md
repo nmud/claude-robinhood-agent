@@ -1,9 +1,11 @@
 Run ONE loop tick. Light by default — escalate only when news or price warrants.
 
-## 0. Mode & hours
+## 0. Mode, hours, reconcile
 - Read `Mode` from config.md: SIM / ADVISE / AUTO.
 - Market closed (incl. pre/after-hours)? → NEWS-ONLY tick: run stages 1–2,
   log, stop. No orders in any mode; SIM logs a "plan for next open" instead.
+- Market open → one batched snapshot: positions, cash, OPEN ORDERS, quotes.
+  Broker state vs our journal mismatch → log discrepancy, NO trades this tick.
 
 ## 1. News sweep (the core of every tick)
 - WebSearch headlines for held + allowlist tickers published since the last tick.
