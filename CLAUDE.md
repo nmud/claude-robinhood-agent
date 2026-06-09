@@ -24,12 +24,25 @@ Don't hedge into mush. Make the call: **enter / hold / exit / no-trade**, stated
 - **Max trades/day** (kills overtrading on noise).
 - **Market hours only.** No order if quote stale/`get_portfolio` errors.
 - **Always set invalidation/stop on entry.**
+- **Kill switch:** NAV < floor in `config.md` → no trades, post-mortem to NOTES.md,
+  AUTO disarms itself. A human must edit `config.md` to re-arm.
+- **Earnings blackout:** no new entry ≤2 trading days before that ticker's
+  earnings (per `calendar.md`), unless the logged thesis IS the event — then ≤ half size.
+  Held position with earnings ≤5 sessions out → explicit hold-or-exit decision, in writing.
+- **NAV log:** every pass appends `date,nav,spy_close` to `eval/nav_log.csv`.
+  Never edit past rows. `python3 eval/benchmark.py` = the real scoreboard vs SPY.
 Defaults live in `config.md`. AUTO will not arm until those are set.
 
 ## Poll loop (long-running)
 Run via `/loop`, background task, or cron — re-invokes one pass each tick.
-Pass = snapshot → classify regime → decide → (ADVISE: propose / AUTO: act) → log.
-**Interval = strategy timeframe**, not reflex. Default 60s intraday, 5–15m swing. Faster only on user request; expect rate limits + token burn. One batched read per tick — never poll a single quote in a tight loop.
+Pass = the staged routine in `prompts/daily.md` (snapshot → safety gates → news/calendar → regime → position review → decide → act → log).
+**Default cadence = 1 pass/day after open** (swing timeframe; cron in `scripts/daily_run.sh`). Intraday intervals only on explicit user request; expect rate limits + token burn. One batched read per tick — never poll a single quote in a tight loop.
+
+## News & catalysts (no call without it)
+- `calendar.md` = known events ahead (earnings per ticker, FOMC/CPI/NFP). Refresh every pass; entries >5 trading days old are stale and must be re-verified before trading that ticker.
+- Per held position each pass: scan headlines since last pass → classify THESIS-BREAKING / THESIS-CONFIRMING / NOISE. Breaking → exit this pass. Noise → not even logged.
+- News justifies caution and exits more often than entries. A headline alone is not a thesis.
+- Account data never goes into web queries (web = market/news only).
 
 ## Regime → strategy
 | Signal | Fit | Avoid |

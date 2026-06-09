@@ -19,3 +19,4 @@ config.md
 Thumbs.db
 .vscode/
 .idea/
+logs/
