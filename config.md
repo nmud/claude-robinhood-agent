@@ -4,7 +4,7 @@ Sized for a ~$1,000 agentic account. Edit, then say "arm AUTO".
 
 - Mode: SIM            # SIM | ADVISE | AUTO — see CLAUDE.md "Three modes"
 - Allowlist tickers: SPY, QQQ, AAPL, MSFT, NVDA
-- Per-order cap ($): 100
+- Per-order cap ($): 100   # tactical (S1-S4) orders only; S0 core-sleeve orders exempt
 - Max position (% portfolio): 10
 - Min cash (% portfolio): 10
 - Risk per trade (% NAV): 0.75

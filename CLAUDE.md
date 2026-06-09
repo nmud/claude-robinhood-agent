@@ -21,7 +21,11 @@ SIM and ADVISE obey the same rails as AUTO — a paper trade that breaks a rail 
 
 ## AUTO guardrails (hard — breach = halt)
 - **Allowlist** only: trade nothing outside `config` tickers.
-- **Per-order cap** + **max position %** of portfolio.
+- **Per-order cap** + **max position %** of portfolio. EXCEPTION — S0 core-sleeve
+  orders (SPY/QQQ per the monthly 200d-MA rule) are exempt from the per-order cap
+  and don't count toward max trades/day: they're rule-driven, not judgment-driven.
+  Limit: ONE core rebalance order per pass; all other execution discipline
+  (limit orders, auction windows, intent-then-confirm) still applies.
 - **Daily loss limit** → hit it: cancel opens, go flat, stop for the day.
 - **Max trades/day** (kills overtrading on noise).
 - **Market hours only.** No order if quote stale/`get_portfolio` errors.

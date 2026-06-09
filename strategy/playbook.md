@@ -7,6 +7,9 @@
 - Rationale: trend-filtered index exposure (Faber-style) is the highest-evidence
   strategy available to a small account; the tactical setups below (the other
   ~40%, beyond the cash floor) have to beat it to justify existing.
+- Execution: core orders are exempt from the per-order cap and trade count
+  (one rebalance order per pass) — the $500 build/exit happens in one order,
+  same day the rule fires. See CLAUDE.md AUTO guardrails.
 - The benchmark question every month: is the satellite sleeve beating the core?
 
 Every trade must name its setup in the finding and the SCORECARD `Strat` column.
