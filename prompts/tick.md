@@ -8,6 +8,9 @@ Run ONE loop tick. Light by default — escalate only when news or price warrant
   Broker state vs our journal mismatch → log discrepancy, NO trades this tick.
 
 ## 1. News sweep (the core of every tick)
+- "Last tick" = the latest timestamp in today's `news/YYYY-MM-DD.md`
+  (first tick of the day: the last timestamp in yesterday's file). That
+  timestamp is the single source of truth for "since when".
 - WebSearch headlines for held + allowlist tickers published since the last tick.
 - Dedupe: check today's `news/YYYY-MM-DD.md` (and yesterday's on the first tick).
   Already-logged items are skipped silently.
@@ -49,7 +52,8 @@ daily loss limit, max trades/day.
 
 ## 5. Log
 - Escalated tick → `findings/YYYY-MM-DD-<tkr>.md` (include Catalysts line).
-- Once per day (first escalated tick or last tick): append `date,nav,spy_close`
-  to `eval/nav_log.csv`. In SIM, nav = paper NAV (cash + marked paper positions).
+- Once per day (first escalated tick or last tick): append `date,nav,spy_close` —
+  real modes → `eval/nav_log.csv`; SIM → `eval/nav_log_sim.csv` (paper NAV =
+  cash + marked paper positions). NEVER write paper NAV to the real log.
 
 Be terse. One batched quote read per tick. No essays on quiet ticks.

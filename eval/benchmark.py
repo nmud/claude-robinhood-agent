@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-"""Compare hood-bot NAV against buy-and-hold SPY since inception.
+"""Compare bot NAV against buy-and-hold SPY since inception.
 
-Reads eval/nav_log.csv with rows: date,nav,spy_close
-(the daily run appends one row per trading day).
+Reads eval/nav_log.csv (real) with rows: date,nav,spy_close.
+Pass --sim to read eval/nav_log_sim.csv (paper NAV). Never mixed.
 """
 import csv
 import sys
 from pathlib import Path
 
-LOG = Path(__file__).parent / "nav_log.csv"
+SIM = "--sim" in sys.argv
+LOG = Path(__file__).parent / ("nav_log_sim.csv" if SIM else "nav_log.csv")
 
 
 def max_drawdown(series):
