@@ -7,7 +7,19 @@
       "mcp__robinhood-trading__get_equity_positions",
       "mcp__robinhood-trading__get_watchlists",
       "mcp__robinhood-trading__get_watchlist_items",
-      "mcp__robinhood-trading__get_equity_quotes"
+      "mcp__robinhood-trading__get_equity_quotes",
+      "Bash(gh issue *)",
+      "Bash(where.exe gh *)",
+      "Bash(gh.exe --version)",
+      "Bash(git -C \"C:\\\\Users\\\\Raymond\\\\Git\\\\tradingstrats\" remote -v)",
+      "Bash(git -C \"C:\\\\Users\\\\Raymond\\\\Git\\\\tradingstrats\" branch -a)",
+      "Bash(git -C \"C:\\\\Users\\\\Raymond\\\\Git\\\\tradingstrats\" log origin/news-framework --oneline -10)",
+      "Bash(curl -s \"https://api.github.com/repos/nmud/claude-robinhood-agent/issues?state=open&per_page=50\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(f'#{i[\\\\\"number\\\\\"]}: {i[\\\\\"title\\\\\"]}\\\\n{i.get\\(\\\\\"body\\\\\",\\\\\"\\\\\"\\)}\\\\n{\\\\\"-\\\\\"*60}'\\) for i in d if \\\\\"pull_request\\\\\" not in i]\")",
+      "Bash(git *)",
+      "Bash(py --version)",
+      "Bash(claude --version)",
+      "PowerShell(winget install *)"
     ]
   }
 }

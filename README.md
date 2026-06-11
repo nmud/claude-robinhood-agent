@@ -25,6 +25,9 @@ It gives you two things:
 
 - `CLAUDE.md` — the agent's rulebook.
 - `config.md` — safety limits for AUTO. **Edit before arming.**
+- `watcher.py` + `scripts/` — event-driven runtime: a token-free process watches
+  the tape (free API) and wakes a single-ticker agent only on a real move. See
+  `WATCHER.md`.
 - `findings/` — its write-up per analysis.
 - `NOTES.md` — running log of what worked / flopped.
 - `SCORECARD.md` — every call, with result + P/L.
