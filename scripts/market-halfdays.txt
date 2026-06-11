@@ -1,0 +1,5 @@
+# Early-close days (1:00pm ET close). One YYYY-MM-DD per line. '#' lines ignored.
+# VERIFY against the official exchange calendar; update yearly.
+# 2026
+2026-11-27  # Day after Thanksgiving
+2026-12-24  # Christmas Eve

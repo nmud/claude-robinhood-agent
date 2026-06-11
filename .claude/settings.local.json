@@ -19,7 +19,10 @@
       "Bash(git *)",
       "Bash(py --version)",
       "Bash(claude --version)",
-      "PowerShell(winget install *)"
+      "PowerShell(winget install *)",
+      "Bash(bash -n scripts/claude-daemon.sh)",
+      "Bash(bash scripts/claude-daemon.sh help)",
+      "Bash(bash *)"
     ]
   }
 }
